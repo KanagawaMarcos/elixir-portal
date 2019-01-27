@@ -1,4 +1,13 @@
-defmodule Portal.Door do
+ defmodule Portal.Door do
+    def child_spec(opts)do
+        %{
+            id: Portal.Door,
+            start: {Portal.Door, :start_link,[opts]},
+            type: :worker,
+            restart: :permanent,
+            shutdown: 500
+        }
+    end
     @doc """
     Start a door with the given 'color'
 
